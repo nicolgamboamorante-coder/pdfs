@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <style>
+    @page { size: letter; margin: 2cm; }
+    body { font-family: Helvetica, Arial, sans-serif; font-size: 12px; }
+    h1 { font-size: 20px; }
+    table { width: 100%; }
+    th { background-color: #e5e7eb; text-align: left; padding: 6px; border: 1px solid #999; }
+    td { padding: 6px; border: 1px solid #999; }
+  </style>
+  {% if preview %}
+  <style>
+    body { background: #f3f4f6; }
+    .sheet { background: #fff; max-width: 800px; margin: 30px auto; padding: 30px; }
+    table { border-collapse: collapse; }
+    .actions { text-align: center; margin: 20px; }
+    .btn { display: inline-block; padding: 10px 18px; background: #2563eb;
+           color: #fff; text-decoration: none; border-radius: 6px; margin: 0 6px; }
+    .btn.secondary { background: #6b7280; }
+  </style>
+  {% endif %}
+</head>
+<body>
+  {% if preview %}<main class="sheet">{% endif %}
+
+  <h1>{{ title }}</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th><th>Producto</th><th>Categoria</th><th>Precio</th><th>Stock</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td>${{ "%.2f"|format(product.price) }}</td>
+        <td>{{ product.stock }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% if preview %}
+  </main>
+  <div class="actions">
+    <a class="btn" href="/report/pdf">Descargar PDF</a>
+    <a class="btn secondary" href="/">Volver al inicio</a>
+  </div>
+  {% endif %}
+</body>
+</html>
