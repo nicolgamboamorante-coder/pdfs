@@ -1,6 +1,6 @@
 version = 1
 revision = 5
-requires-python = ">=3.14.5"
+requires-python = ">=3.14"
 
 [[package]]
 name = "aiohappyeyeballs"
@@ -392,9 +392,9 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "fastapi", specifier = ">=0.141.1" },
-    { name = "jinja2", specifier = ">=3.1.6" },
-    { name = "xhtml2pdf", specifier = ">=0.2.18" },
+    { name = "fastapi", specifier = "==0.141.1" },
+    { name = "jinja2", specifier = "==3.1.6" },
+    { name = "xhtml2pdf", specifier = "==0.2.18" },
 ]
 
 [[package]]
